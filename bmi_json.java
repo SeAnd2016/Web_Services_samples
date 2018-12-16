@@ -29,6 +29,6 @@ public String CalcMetric(
 DecimalFormat df = new DecimalFormat("####0.0");
 Double bmi = (double) w / (h * h) * 10000;          // w / Math.pow(h, 2) * 10000
 String result = df.format(bmi).toString();
-return "{\"calc\": {\"unit\": \"imperial\", \"height\": " + h + ", " + "\"weight\": " + w + ", " + "\"bmi\": " + result + "}}";
+return "{\"calc\": {\"unit\": \"metric\", \"height\": " + h + ", " + "\"weight\": " + w + ", " + "\"bmi\": " + result + "}}";
 }
 }
