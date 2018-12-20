@@ -1,0 +1,78 @@
+package core;
+
+//import java.text.DecimalFormat;
+
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+
+@Path("xml")
+   public class CtoF {
+	
+	//XML: Inches to Centimeters
+	
+	@GET
+	@Produces("application/xml")
+	public String convertItoCfromInput(
+		@DefaultValue("1") @QueryParam("inTOcm") Double in) {    // inches
+		//DecimalFormat df = new DecimalFormat("####0.00");
+		Double cm = in * 2.54;
+		int cm2 = (int) Math.round(cm);
+		int in2 = (int) Math.round(in);
+		//String centimeters = df.format(cm).toString();
+return "<calc conversion=\"inches to centimeters\">" + "<inches>" + in2 + "</inches>" + "<centimeters>" + cm2 + "</centimeters>" + "</calc>";
+}
+}
+
+@Path("json")
+   public class CtoF {
+	
+	//JSON: Inches to Centimeters
+	
+	@GET
+	@Produces("application/json")
+	public String convertItoCfromInput(
+		@DefaultValue("1") @QueryParam("inTOcm") Double in) {    // inches
+		
+		//DecimalFormat df = new DecimalFormat("####0.00");
+		Double cm = in * 2.54;
+		int cm2 = (int) Math.round(cm);
+		int in2 = (int) Math.round(in);
+		//String centimeters = df.format(cm).toString();
+return "{\n\t\"calc\": { \n\t\t\"conversion\": \"inches to centimeters\"," + "\n\t\t\"inches\": " + in2 + ", " + "\n\t\t\"centimeters\": " + cm2 + "\n\t}\n}";
+}
+}
+
+@Path("xml")
+   public class CtoF {
+	
+	//XML: Centimeters to Inches
+	
+	@GET
+	@Produces("application/xml")
+	public String convertItoCfromInput(
+		@DefaultValue("1") @QueryParam("cmTOin") Double cm) {    // inches
+		Double in = cm * 0.3937;
+		int cm2 = (int) Math.round(cm);
+		int in2 = (int) Math.round(in);
+return "<calc conversion=\"centimeters to inches\">" + "<centimeters>" + cm2 + "</centimeters>" + "<inches>" + in2 + "</inches>" + "</calc>";
+}
+}
+
+@Path("json")
+public class CtoF {
+	
+	//JSON: Inches to Centimeters
+	
+	@GET
+	@Produces("application/json")
+	public String convertItoCfromInput(
+		@DefaultValue("1") @QueryParam("cmTOin") Double cm) {    // inches
+		Double in = cm * 0.3937;
+		int cm2 = (int) Math.round(cm);
+		int in2 = (int) Math.round(in);
+return "{\n\t\"calc\": { \n\t\t\"conversion\": \"centimeters to inches\"," + "\n\t\t\"centimeters\": " + cm2 + ", " + "\n\t\t\"inches\": " + in2 + "\n\t}\n}";
+}
+}
