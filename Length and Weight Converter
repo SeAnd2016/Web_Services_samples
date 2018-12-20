@@ -16,7 +16,7 @@ import javax.ws.rs.QueryParam;
 	@GET
 	@Produces("application/xml")
 	public String convertItoCfromInput(
-		@DefaultValue("1") @QueryParam("inTOcm") Double in) {    // inches
+		@DefaultValue("1") @QueryParam("inTOcm") Double in) { 
 		//DecimalFormat df = new DecimalFormat("####0.00");
 		Double cm = in * 2.54;
 		int cm2 = (int) Math.round(cm);
@@ -34,7 +34,7 @@ return "<calc conversion=\"inches to centimeters\">" + "<inches>" + in2 + "</inc
 	@GET
 	@Produces("application/json")
 	public String convertItoCfromInput(
-		@DefaultValue("1") @QueryParam("inTOcm") Double in) {    // inches
+		@DefaultValue("1") @QueryParam("inTOcm") Double in) { 
 		
 		//DecimalFormat df = new DecimalFormat("####0.00");
 		Double cm = in * 2.54;
@@ -53,7 +53,7 @@ return "{\n\t\"calc\": { \n\t\t\"conversion\": \"inches to centimeters\"," + "\n
 	@GET
 	@Produces("application/xml")
 	public String convertItoCfromInput(
-		@DefaultValue("1") @QueryParam("cmTOin") Double cm) {    // inches
+		@DefaultValue("1") @QueryParam("cmTOin") Double cm) { 
 		Double in = cm * 0.3937;
 		int cm2 = (int) Math.round(cm);
 		int in2 = (int) Math.round(in);
@@ -64,15 +64,81 @@ return "<calc conversion=\"centimeters to inches\">" + "<centimeters>" + cm2 + "
 @Path("json")
 public class CtoF {
 	
-	//JSON: Inches to Centimeters
+	//JSON: Centimeters to Inches
 	
 	@GET
 	@Produces("application/json")
 	public String convertItoCfromInput(
-		@DefaultValue("1") @QueryParam("cmTOin") Double cm) {    // inches
+		@DefaultValue("1") @QueryParam("cmTOin") Double cm) { 
 		Double in = cm * 0.3937;
 		int cm2 = (int) Math.round(cm);
 		int in2 = (int) Math.round(in);
 return "{\n\t\"calc\": { \n\t\t\"conversion\": \"centimeters to inches\"," + "\n\t\t\"centimeters\": " + cm2 + ", " + "\n\t\t\"inches\": " + in2 + "\n\t}\n}";
+}
+}
+
+====================================================================================================
+
+@Path("xml")
+public class CtoF {
+	
+	//XML: Pounds to Kilograms
+	
+	@GET
+	@Produces("application/xml")
+	public String convertItoCfromInput(
+		@DefaultValue("1") @QueryParam("lbTOkg") Double lb) { 
+		Double kg = lb * 0.4536;
+		int kg2 = (int) Math.round(kg);
+		int lb2 = (int) Math.round(lb);
+return "<calc conversion=\"pounds to kilograms\">" + "<pounds>" + lb2 + "</pounds>" + "<kilograms>" + kg2 + "</kilograms>" + "</calc>";
+}
+}
+
+@Path("json")
+public class CtoF {
+	
+	//JSON: Pounds to Kilograms
+	
+	@GET
+	@Produces("application/json")
+	public String convertItoCfromInput(
+		@DefaultValue("1") @QueryParam("lbTOkg") Double lb) {
+		Double kg = lb * 0.4536;
+		int kg2 = (int) Math.round(kg);
+		int lb2 = (int) Math.round(lb);
+return "{\n\t\"calc\": { \n\t\t\"conversion\": \"pounds to kilograms\"," + "\n\t\t\"pounds\": " + lb2 + ", " + "\n\t\t\"kilograms\": " + kg2 + "\n\t}\n}";
+}
+}
+
+====================================================================================================
+
+@Path("weight")
+public class CtoF {
+	
+	//XML: Pounds to Kilograms
+	
+	@GET
+	@Path("xml")
+	@Produces("application/xml")
+	public String convertKtoPfromInput_x(
+		@DefaultValue("1") @QueryParam("kgTOlb") Double kg) { 
+		Double lb = kg * 2.2046;
+		int kg2 = (int) Math.round(kg);
+		int lb2 = (int) Math.round(lb);
+return "<calc conversion=\"kilograms to pounds\">" + "<kilograms>" + kg2 + "</kilograms>" + "<pounds>" + lb2 + "</pounds>" + "</calc>";
+}
+	
+	//JSON: Pounds to Kilograms
+	
+	@GET
+	@Path("json")
+	@Produces("application/json")
+	public String convertKtoPfromInput_j(
+		@DefaultValue("1") @QueryParam("kgTOlb") Double kg) { 
+		Double lb = kg * 2.2046;
+		int kg2 = (int) Math.round(kg);
+		int lb2 = (int) Math.round(lb);
+return "{\n\t\"calc\": { \n\t\t\"conversion\": \"kilograms to pounds\"," + "\n\t\t\"kilograms\": " + kg2 + ", " + "\n\t\t\"pounds\": " + lb2 + "\n\t}\n}";
 }
 }
