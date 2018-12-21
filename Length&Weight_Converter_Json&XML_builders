@@ -1,0 +1,368 @@
+package core;
+
+import java.text.DecimalFormat;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
+import org.json.JSONObject;
+
+@Path("xml")
+   public class CtoF {
+	
+	//XML: Inches to Centimeters
+	
+	@GET
+	@Produces("application/xml")
+	public String convertItoCfromInput(
+		@DefaultValue("1") @QueryParam("inTOcm") Double in) { 
+		//DecimalFormat df = new DecimalFormat("####0.00");
+		Double cm = in * 2.54;
+		int cm2 = (int) Math.round(cm);
+		int in2 = (int) Math.round(in);
+		//String centimeters = df.format(cm).toString();
+return "<calc conversion=\"inches to centimeters\">" + "<inches>" + in2 + "</inches>" + "<centimeters>" + cm2 + "</centimeters>" + "</calc>";
+}
+}
+
+=========
+
+import java.text.DecimalFormat;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Response;
+import org.json.JSONObject;
+
+@Path("json")
+public class CtoF {
+	
+	//JSON: Inches to Centimeters
+
+	JSONObject json = new JSONObject();
+	JSONObject json2 = new JSONObject();
+	JSONObject json3 = new JSONObject();
+	JSONObject json_array = new JSONObject();
+	DecimalFormat df = new DecimalFormat("####0.00");
+	@GET
+	@Produces("application/json")
+	public Response kg_to_lb_json(
+		@DefaultValue("1") @QueryParam("inTOcm") Double in) { 
+		Double cm = in * 2.54;
+		String cm_out = df.format(cm).toString();
+		String in_out = df.format(in).toString();
+		json.put("calc", json2);
+		json2.put("conversion", json3);
+		json3.put("in to cm", json_array);
+		//json_array.put("conversion", "in to cm");
+		json_array.put("cm", cm_out);
+		json_array.put("in", in_out);
+		String out = json.toString();   
+	return Response.status(200).entity(out).build();
+}
+}
+
+============
+
+import java.text.DecimalFormat;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Response;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+@Path("json")
+public class CtoF {
+	
+	//JSON: Inches to Centimeters
+
+	JSONObject json = new JSONObject();
+	JSONObject json_array = new JSONObject();
+	JSONObject json_array_arrays = new JSONObject();
+	JSONArray array = new JSONArray();
+	
+	DecimalFormat df = new DecimalFormat("####0.00");
+	
+	@GET
+	@Produces("application/json")
+	public Response kg_to_lb_json(
+		@DefaultValue("1") @QueryParam("inTOcm") Double in) { 
+		Double cm = in * 2.54;
+		String cm_out = df.format(cm).toString();
+		String in_out = df.format(in).toString();
+		
+		json.put("calc", json_array);
+		json_array.put("conversion", "in to cm");
+		json_array.put("cm", cm_out);
+		json_array.put("in", in_out);
+		
+		json_array_arrays.put("length", "cm to in");
+		json_array_arrays.put("temperature", "C to F");
+		
+		array.put(json_array_arrays);
+		json_array.put("other conversions", array);
+		
+		String out = json.toString();   
+	return Response.status(200).entity(out).build();
+}
+}
+
+==============================
+
+@Path("xml")
+   public class CtoF {
+	
+	//XML: Centimeters to Inches
+	
+	@GET
+	@Produces("application/xml")
+	public String convertItoCfromInput(
+		@DefaultValue("1") @QueryParam("cmTOin") Double cm) { 
+		Double in = cm * 0.3937;
+		int cm2 = (int) Math.round(cm);
+		int in2 = (int) Math.round(in);
+return "<calc conversion=\"centimeters to inches\">" + "<centimeters>" + cm2 + "</centimeters>" + "<inches>" + in2 + "</inches>" + "</calc>";
+}
+}
+
+===============================
+
+@Path("json")
+public class CtoF {
+	
+	//JSON: Centimeters to Inches
+	
+	@GET
+	@Produces("application/json")
+	public String convertItoCfromInput(
+		@DefaultValue("1") @QueryParam("cmTOin") Double cm) { 
+		Double in = cm * 0.3937;
+		int cm2 = (int) Math.round(cm);
+		int in2 = (int) Math.round(in);
+return "{\n\t\"calc\": { \n\t\t\"conversion\": \"centimeters to inches\"," + "\n\t\t\"centimeters\": " + cm2 + ", " + "\n\t\t\"inches\": " + in2 + "\n\t}\n}";
+}
+}
+
+=========================
+
+import java.text.DecimalFormat;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Response;
+import org.json.JSONObject;
+
+@Path("json")
+public class CtoF {
+	
+	//JSON: Centimeters to Inches
+
+	JSONObject json = new JSONObject();
+	JSONObject json_array = new JSONObject();
+	DecimalFormat df = new DecimalFormat("####0.00");
+	@GET
+	@Produces("application/json")
+	public Response cm_to_in_json(
+			
+		@DefaultValue("1") @QueryParam("cmTOin") Double cm) { 
+		Double in = cm * 0.3937;
+		
+		String cm_out = df.format(cm).toString();
+		String in_out = df.format(in).toString();
+		json.put("calc", json_array);
+		json_array.put("conversion", "cm to in");
+		json_array.put("in", in_out);
+		json_array.put("cm", cm_out);
+		String out = json.toString();   
+	return Response.status(200).entity(out).build();
+}
+}
+
+====================================================================================================
+
+@Path("xml")
+public class CtoF {
+	
+	//XML: Pounds to Kilograms
+	
+	@GET
+	@Produces("application/xml")
+	public String convertItoCfromInput(
+		@DefaultValue("1") @QueryParam("lbTOkg") Double lb) { 
+		Double kg = lb * 0.4536;
+		int kg2 = (int) Math.round(kg);
+		int lb2 = (int) Math.round(lb);
+return "<calc conversion=\"pounds to kilograms\">" + "<pounds>" + lb2 + "</pounds>" + "<kilograms>" + kg2 + "</kilograms>" + "</calc>";
+}
+}
+
+============================
+
+@Path("json")
+public class CtoF {
+	
+	//JSON: Pounds to Kilograms
+	
+	@GET
+	@Produces("application/json")
+	public String convertItoCfromInput(
+		@DefaultValue("1") @QueryParam("lbTOkg") Double lb) {
+		Double kg = lb * 0.4536;
+		int kg2 = (int) Math.round(kg);
+		int lb2 = (int) Math.round(lb);
+return "{\n\t\"calc\": { \n\t\t\"conversion\": \"pounds to kilograms\"," + "\n\t\t\"pounds\": " + lb2 + ", " + "\n\t\t\"kilograms\": " + kg2 + "\n\t}\n}";
+}
+}
+
+===========================
+
+import java.text.DecimalFormat;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Response;
+import org.json.JSONObject;
+
+@Path("json")
+public class CtoF {
+	
+	//JSON: Inches to Centimeters
+
+	JSONObject json = new JSONObject();
+	JSONObject json_array = new JSONObject();
+	DecimalFormat df = new DecimalFormat("####0.00");
+	@GET
+	@Produces("application/json")
+	public Response convertItoCfromInput(
+		@DefaultValue("1") @QueryParam("lbTOkg") Double lb) {
+		Double kg = lb * 0.4536;
+		String kg_out = df.format(kg).toString();
+		String lb_out = df.format(lb).toString();
+		json.put("calc", json_array);
+		json_array.put("conversion", "lb to kg");
+		json_array.put("kg", kg_out);
+		json_array.put("lb", lb_out);
+		String out = json.toString();   
+	return Response.status(200).entity(out).build();
+}
+}
+
+====================================================================================================
+
+@Path("weight")
+public class CtoF {
+	
+	//XML: Kilograms to Pounds
+	
+	@GET
+	@Path("xml")
+	@Produces("application/xml")
+	public String convertKtoPfromInput_x(
+		@DefaultValue("1") @QueryParam("kgTOlb") Double kg) { 
+		Double lb = kg * 2.2046;
+		int kg2 = (int) Math.round(kg);
+		int lb2 = (int) Math.round(lb);
+return "<calc conversion=\"kilograms to pounds\">" + "<kilograms>" + kg2 + "</kilograms>" + "<pounds>" + lb2 + "</pounds>" + "</calc>";
+}
+
+===============================
+	
+	//JSON: 
+	//JSON: Kilograms to Pounds
+	
+	@GET
+	@Path("json")
+	@Produces("application/json")
+	public String convertKtoPfromInput_j(
+		@DefaultValue("1") @QueryParam("kgTOlb") Double kg) { 
+		Double lb = kg * 2.2046;
+		int kg2 = (int) Math.round(kg);
+		int lb2 = (int) Math.round(lb);
+return "{\n\t\"calc\": { \n\t\t\"conversion\": \"kilograms to pounds\"," + "\n\t\t\"kilograms\": " + kg2 + ", " + "\n\t\t\"pounds\": " + lb2 + "\n\t}\n}";
+}
+}
+
+================================
+
+import java.text.DecimalFormat;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Response;
+import org.json.JSONObject;
+
+@Path("json")
+public class CtoF {
+	
+	//JSON: Kilograms to Pounds
+
+	JSONObject json = new JSONObject();
+	JSONObject json_array = new JSONObject();
+	DecimalFormat df = new DecimalFormat("####0.00");
+	@GET
+	@Produces("application/json")
+	public Response convertKtoPfromInput_j(
+		@DefaultValue("1") @QueryParam("kgTOlb") Double kg) { 
+		Double lb = kg * 2.2046;
+		String kg_out = df.format(kg).toString();
+		String lb_out = df.format(lb).toString();
+		json.put("calc", json_array);
+		json_array.put("conversion", "kg to lb");
+		json_array.put("kg", kg_out);
+		json_array.put("lb", lb_out);
+		String out = json.toString();   
+	return Response.status(200).entity(out).build();
+}
+}
+
+===================================
+
+//XML builder
+
+import java.io.File;
+import javax.xml.parsers.*;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.w3c.dom.*;
+
+public class XML_builder {
+public static void main(String argv[]) throws ParserConfigurationException, TransformerException {
+DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
+DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
+// root elements
+Document doc = docBuilder.newDocument();
+Element rootElement = doc.createElement("calc");
+rootElement.setAttribute("conversion", " kg to lb");
+doc.appendChild(rootElement);
+// first element
+Element first = doc.createElement("kg");
+first.appendChild(doc.createTextNode("100.00"));
+// first.setAttribute("attr", "value");
+rootElement.appendChild(first);
+// second element
+Element second = doc.createElement("lb");
+second.appendChild(doc.createTextNode("220.46"));
+rootElement.appendChild(second);
+// write the content into xml file
+TransformerFactory transformerFactory = TransformerFactory.newInstance();
+Transformer transformer = transformerFactory.newTransformer();
+DOMSource source = new DOMSource(doc);
+StreamResult result = new StreamResult(new File("output.xml"));
+// StreamResult result = new StreamResult(System.out);
+System.out.println("Done");
+transformer.transform(source, result);}
+}
